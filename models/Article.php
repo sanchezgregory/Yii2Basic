@@ -6,6 +6,7 @@ use Yii;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
+use yii\helpers\Html;
 
 /**
  * This is the model class for table "articles".
@@ -97,5 +98,10 @@ class Article extends \yii\db\ActiveRecord
     public function getUpdatedBy()
     {
         return $this->hasOne(User::class, ['id' => 'updated_by']);
+    }
+
+    public function getEncodingBody()
+    {
+        return Html::encode($this->body);
     }
 }

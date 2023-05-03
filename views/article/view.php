@@ -15,6 +15,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
+    <p class="text-muted">
+        <small>Created At: <b><?php echo Yii::$app->formatter->asRelativeTime($model->created_at) ?></b>
+            By: <?php echo $model->createdBy->username ?>
+        </small>
+
+    </p>
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->id], [
@@ -26,18 +32,25 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'title',
-            'slug',
-            'body:ntext',
-            'created_at',
-            'updated_at',
-            'created_by',
-            'updated_by',
-        ],
-    ]) ?>
+<!--    --><?php //= DetailView::widget([
+//        'model' => $model,
+//        'attributes' => [
+//            'id',
+//            'title',
+//            'slug',
+//            'body:ntext',
+//            'created_at',
+//            'updated_at',
+//            'created_by',
+//            'updated_by',
+//        ],
+//    ]) ?>
+
+<!--    <div>-->
+<!--        --><?php //echo Html::encode($model->body)?>
+<!--    </div>-->
+    <div>
+        <?php echo $model->getEncodingBody() ?>
+    </div>
 
 </div>
