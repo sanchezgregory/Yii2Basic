@@ -4,7 +4,10 @@ namespace app\controllers;
 
 use app\models\Article;
 use app\models\ArticleSearch;
+use Yii;
+use yii\filters\AccessControl;
 use yii\web\Controller;
+use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -18,17 +21,25 @@ class ArticleController extends Controller
      */
     public function behaviors()
     {
-        return array_merge(
-            parent::behaviors(),
-            [
+        return [
+                [
+                    'class' => AccessControl::class,
+                    'only' => ['create','update','delete'],
+                    'rules' =>[
+                        [
+                            'actions' => ['update', 'create','delete'],
+                            'allow' => true,
+                            'roles' => ['@']
+                        ]
+                    ]
+                ],
                 'verbs' => [
                     'class' => VerbFilter::className(),
                     'actions' => [
                         'delete' => ['POST'],
                     ],
                 ],
-            ]
-        );
+            ];
     }
 
     /**
@@ -92,7 +103,9 @@ class ArticleController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+        if ($model->created_by !== Yii::$app->user->id) {
+            throw new ForbiddenHttpException('This resource doesn´t belong to you');
+        }
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
@@ -111,7 +124,11 @@ class ArticleController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        if ($model->created_by !== Yii::$app->user->id) {
+            throw new ForbiddenHttpException('This resource doesn´t belong to you');
+        }
+        $model->delete();
 
         return $this->redirect(['index']);
     }
