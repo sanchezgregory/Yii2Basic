@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Article;
 use app\models\ArticleSearch;
+use app\services\ArticleService;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -16,6 +17,12 @@ use yii\filters\VerbFilter;
  */
 class ArticleController extends Controller
 {
+
+    private ArticleService $articleService;
+    public function __invoke(ArticleService $articleService)
+    {
+        $this->articleService = $articleService;
+    }
     /**
      * @inheritDoc
      */
