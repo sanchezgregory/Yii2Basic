@@ -2,7 +2,9 @@
 
 namespace app\models;
 
-class Pokemon
+use yii\base\Model;
+
+class Pokemon extends Model
 {
     public function __construct(
         public readonly int $id,
@@ -12,4 +14,21 @@ class Pokemon
         public readonly int $weight
     ){
     }
+    public function attributeLabels()
+    {
+        return [
+            'name' => 'Nombre',
+            'order' => 'Orden',
+            'weight' => 'Peso'
+        ];
+    }
+
+    public function rules()
+    {
+        return [
+            [['id', 'name', 'order', 'weight'], 'required', 'message'=> 'Asegurate de agregar todos los datos'],
+        ];
+    }
+
+
 }

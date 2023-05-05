@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = 'Pokemons';
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    Ver pokemon: <?php echo $pokemon->name ?>
+    Ver pokemon: <?php \yii\helpers\VarDumper::dump($pokemon->getAttributeLabel('name') . ': ' . $pokemon->name) ?>
 
 
 <!--    <div>-->
