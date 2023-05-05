@@ -71,12 +71,12 @@ class SiteController extends Controller
         return parent::beforeAction($action);
     }
 
-    public function afterAction($action, $result)
-    {
-        echo "<pre>";
-        var_dump($action);
-        echo "</pre>";
-    }
+//    public function afterAction($action, $result)
+//    {
+//        echo "<pre>";
+//        var_dump($action);
+//        echo "</pre>";
+//    }
     /**
      * Displays homepage.
      *

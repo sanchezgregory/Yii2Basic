@@ -64,6 +64,8 @@ $config = [
 //            var_dump('Controller before action from ->on method');
 //            echo "</pre>";
 //        });
+
+       // echo Yii::$app->view->renderFile('@app/views/page/about.php');
     }
 ];
 
