@@ -7,7 +7,7 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'defaultRoute' => 'article/index',
+    //'defaultRoute' => 'article/index',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -54,6 +54,17 @@ $config = [
 
     ],
     'params' => $params,
+    'on beforeAction' => function() {
+//        echo "<pre>";
+//        var_dump('Before application');
+//        echo "</pre>";
+
+//        Yii::$app->controller->on(\yii\web\Controller::EVENT_BEFORE_ACTION, function() {
+//            echo "<pre>";
+//            var_dump('Controller before action from ->on method');
+//            echo "</pre>";
+//        });
+    }
 ];
 
 if (YII_ENV_DEV) {

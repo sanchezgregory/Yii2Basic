@@ -55,6 +55,28 @@ class SiteController extends Controller
         ];
     }
 
+    public function beforeAction($action)
+    {
+//        echo "<pre>";
+//        var_dump($action);
+//        echo "</pre>";
+
+        if ($action->id === 'index') {
+            // Go to index in this case.
+            // can handle this as we want, ig. change the layout
+            $this->layout = 'admin';
+            // or ig disable the csrf
+            $this->enableCsrfValidation = false;
+        }
+        return parent::beforeAction($action);
+    }
+
+    public function afterAction($action, $result)
+    {
+        echo "<pre>";
+        var_dump($action);
+        echo "</pre>";
+    }
     /**
      * Displays homepage.
      *
