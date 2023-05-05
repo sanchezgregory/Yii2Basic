@@ -76,6 +76,7 @@ class PokemonController extends Controller
 
     public function actionView(int $id)
     {
+
         $pokemon = $this->service->getPokemon($id);
         if ($pokemon) {
             return $this->render('pokemon', ['pokemon' => $pokemon]);
