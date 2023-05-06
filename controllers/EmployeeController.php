@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Employee;
 use app\models\EmployeeSearch;
+use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -83,6 +84,7 @@ class EmployeeController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
+                Yii::$app->session->setFlash("success" , "Record successfully added");
                 return $this->redirect(['view', 'emp_no' => $model->emp_no]);
             }
         } else {

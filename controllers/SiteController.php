@@ -154,6 +154,7 @@ class SiteController extends Controller
         $model = new SignupForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->signup()) {
+            Yii::$app->session->setFlash("success" , "Record successfully added");
             return $this->redirect(Yii::$app->homeUrl);
         }
 
