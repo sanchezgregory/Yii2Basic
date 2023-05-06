@@ -29,7 +29,10 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= ListView::widget([
         'dataProvider' => $dataProvider,
 //        'filterModel' => $searchModel,
-        'itemView' => '_article_item'
+        'itemView' => '_article_item',
+        'pager' => [
+            'class' => \yii\bootstrap5\LinkPager::class
+        ],
     ]); ?>
 
 

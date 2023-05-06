@@ -1,0 +1,10 @@
+# hacer un dump de la BD hacia un file.sql
+# docker exec containerid mysqldump -u root --password=root portal-db > lower-portal-db.sql
+
+# hacer un restore de una BD completa desde un file.sql
+#  $ docker cp file.sql <CONTAINER ID>:/file.sql
+# then into the docker.
+# bash-4.2# mysql -u root -proot /var/lib/mysql/employees.sql 
+
+# to ecxecute a script.sql. If you’re at the MySQL command line mysql> you have to declare the SQL file as source.
+# mysql> source \home\user\Desktop\test.sql;
