@@ -38,4 +38,18 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 
+    <hr> <b>Titulos</b>
+    <ul>
+        <?php foreach ($model->titles as $title ): ?>
+            <li><?php echo $title->title  ?></li>
+        <?php endforeach; ?>
+    </ul>
+
+
+    <hr> <b>Salaries</b>
+    <ul>
+        <?php foreach ($model->salaries as $salary ): ?>
+            <li><?php echo $salary->salary  ?></li>
+        <?php endforeach; ?>
+    </ul>
 </div>

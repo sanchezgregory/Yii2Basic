@@ -97,7 +97,7 @@ class Employee extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getDeptNos0()
+    public function getDeptMang()
     {
         return $this->hasMany(Department::class, ['dept_no' => 'dept_no'])->viaTable('dept_manager', ['emp_no' => 'emp_no']);
     }
@@ -113,7 +113,7 @@ class Employee extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Titles]].
+     * Gets query for [[Title]].
      *
      * @return \yii\db\ActiveQuery
      */
