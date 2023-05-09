@@ -68,8 +68,10 @@ class EmployeeController extends Controller
      */
     public function actionView($emp_no)
     {
+        $employee = Employee::find()->with('deptNos.deptEmps')->one(); // ->$this->findModel($emp_no);
+
         return $this->render('view', [
-            'model' => $this->findModel($emp_no),
+            'model' => $employee
         ]);
     }
 

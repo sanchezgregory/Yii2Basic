@@ -38,6 +38,26 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 
+    <hr>
+    <b>Departamentos adscrito | 1 relación </b>
+    <ul>
+        <?PHP
+            foreach ($model->deptNos as $dep) {
+            echo $dep->dept_name . "<br>";
+            }
+        ?>
+    </ul>
+
+    <hr>
+    <b>Departamentos de managers | dos relaciones</b>
+    <ul>
+        <?PHP
+        foreach ($model->deptManagers as $man) {
+            echo $man->deptNo->dept_name;
+        }
+        ?>
+    </ul>
+
     <hr> <b>Titulos</b>
     <ul>
         <?php foreach ($model->titles as $title ): ?>
